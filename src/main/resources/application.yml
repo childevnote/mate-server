@@ -1,0 +1,81 @@
+spring:
+  profiles:
+    active: local
+    group:
+      local:
+        - local
+        - common
+        - secret
+      blue:
+        - blue
+        - common
+        - secret
+      green:
+        - green
+        - common
+        - secret
+
+server:
+  env: blue
+
+---
+spring:
+  config:
+    active:
+      on-profile: local
+
+server:
+  port: 8080
+  serverAddress: localhost
+
+serverName: local_server
+
+---
+spring:
+  config:
+    active:
+      on-profile: blue
+
+server:
+  port: 8080
+  serverAddress: 3.39.175.117
+
+serverName: blue_server
+
+---
+spring:
+  config:
+    active:
+      on-profile: green
+
+
+server:
+  port: 8081
+  serverAddress: 3.39.175.117
+
+serverName: green_server
+
+---
+
+
+spring:
+  application:
+    name: demo
+
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+  data:
+    mongodb:
+      uri: mongodb+srv://daniel011125:${MONGO_PASSWORD}@mate.ll6e7.mongodb.net/mate?retryWrites=true&w=majority&appName=mate
+
+  security:
+    user:
+      name: myuser
+      password: mypassword
+
+server:
+  port: ${PORT:8080}
