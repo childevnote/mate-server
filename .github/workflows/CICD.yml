@@ -23,7 +23,7 @@ jobs:
 
       - name: Build with Maven
         env: 
-          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
           chmod 777 ./mvnw
           ./mvnw clean package
