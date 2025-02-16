@@ -21,10 +21,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Set environment variable
-        run: echo MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }} >> $GITHUB_ENV
-        
       - name: Build with Maven
+        env: 
+          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
         run: |
           chmod 777 ./mvnw
           ./mvnw clean package
