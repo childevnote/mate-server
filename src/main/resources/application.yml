@@ -70,7 +70,7 @@ spring:
 
   data:
     mongodb:
-      uri: ${{ secrets.MONGO_URI }}
+      uri: ${uri}
 
   security:
     user:
