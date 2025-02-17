@@ -21,9 +21,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Create application-secret.yml
+        run: |
+          echo "spring:" > src/main/resources/application-secret.yml
+          echo "  data:" >> src/main/resources/application-secret.yml
+          echo "    mongodb:" >> src/main/resources/application-secret.yml
+          echo "      uri: ${{ secrets.MONGO_URI }}" >> src/main/resources/application-secret.yml
+
+
       - name: Build with Maven
-        env:
-          MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
           chmod +x ./mvnw
           ./mvnw clean package 
