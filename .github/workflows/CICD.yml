@@ -21,17 +21,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Set Yaml
-        uses: microsoft/variable-substitution@v1
-        with:
-          files: src/main/resources/application.yml 
-        env:
-          spring.data.mongodb.uri: ${{ secrets.MONGO_URI }}
-
       - name: Build with Maven
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
           chmod 777 ./mvnw
-          ./mvnw clean package
+          ./mvnw clean package -Dspring.data.mongodb.uri=${MONGO_URI}
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
