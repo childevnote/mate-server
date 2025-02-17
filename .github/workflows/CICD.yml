@@ -21,12 +21,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Create application-secret.yml
+      - name: make application.yml
         run: |
-          echo "spring:" > src/main/resources/application-secret.yml
-          echo "  data:" >> src/main/resources/application-secret.yml
-          echo "    mongodb:" >> src/main/resources/application-secret.yml
-          echo "      uri: ${{ secrets.MONGO_URI }}" >> src/main/resources/application-secret.yml
+          mkdir -p ./src/main/resources
+          cd ./src/main/resources
+          touch ./application.yml
+          echo "${{ secrets.APPLICATION }}" > ./application.yml
 
 
       - name: Build with Maven
