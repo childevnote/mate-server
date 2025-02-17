@@ -70,7 +70,7 @@ spring:
 
   data:
     mongodb:
-      uri: ${spring.data.mongodb.uri}
+      uri: ${MONGO_URI}
 
   security:
     user:
