@@ -1,81 +1,81 @@
-spring:
-  profiles:
-    active: local
-    group:
-      local:
-        - local
-        - common
-        - secret
-      blue:
-        - blue
-        - common
-        - secret
-      green:
-        - green
-        - common
-        - secret
+# spring:
+#   profiles:
+#     active: local
+#     group:
+#       local:
+#         - local
+#         - common
+#         - secret
+#       blue:
+#         - blue
+#         - common
+#         - secret
+#       green:
+#         - green
+#         - common
+#         - secret
 
-server:
-  env: blue
+# server:
+#   env: blue
 
----
-spring:
-  config:
-    active:
-      on-profile: local
+# ---
+# spring:
+#   config:
+#     active:
+#       on-profile: local
 
-server:
-  port: 8080
-  serverAddress: localhost
+# server:
+#   port: 8080
+#   serverAddress: localhost
 
-serverName: local_server
+# serverName: local_server
 
----
-spring:
-  config:
-    active:
-      on-profile: blue
+# ---
+# spring:
+#   config:
+#     active:
+#       on-profile: blue
 
-server:
-  port: 8080
-  serverAddress: 3.39.175.117
+# server:
+#   port: 8080
+#   serverAddress: 3.39.175.117
 
-serverName: blue_server
+# serverName: blue_server
 
----
-spring:
-  config:
-    active:
-      on-profile: green
-
-
-server:
-  port: 8081
-  serverAddress: 3.39.175.117
-
-serverName: green_server
-
----
+# ---
+# spring:
+#   config:
+#     active:
+#       on-profile: green
 
 
-spring:
-  application:
-    name: demo
+# server:
+#   port: 8081
+#   serverAddress: 3.39.175.117
 
-  devtools:
-    restart:
-      enabled: true
-    livereload:
-      enabled: true
+# serverName: green_server
 
-  data:
-    mongodb:
-      uri: ${MONGO_URI}
+# ---
 
-  security:
-    user:
-      name: myuser
-      password: mypassword
 
-server:
-  port: ${PORT:8080}
+# spring:
+#   application:
+#     name: demo
+
+#   devtools:
+#     restart:
+#       enabled: true
+#     livereload:
+#       enabled: true
+
+#   data:
+#     mongodb:
+#       uri: ${MONGO_URI}
+
+#   security:
+#     user:
+#       name: myuser
+#       password: mypassword
+
+# server:
+#   port: ${PORT:8080}
