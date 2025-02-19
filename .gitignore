@@ -32,4 +32,4 @@ build/
 .vscode/
 .env
 /.idx/
-src/main/resources/application.yml
+application.yml
