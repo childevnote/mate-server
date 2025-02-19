@@ -21,18 +21,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: make application.yml
-        run: |
-          mkdir -p ./src/main/resources
-          cd ./src/main/resources
-          touch ./application.yml
-          echo "${{ secrets.APPLICATION }}" > ./application.yml
-
-
       - name: Build with Maven
         run: |
-          chmod +x ./mvnw
-          ./mvnw clean install -DskipTests
+          echo ${{secrets.APPLICATION}} | base64 --decode > ./src/main/resources/application.yml
+          cat ./src/main/resources/application.yml
+          chmod 777 ./mvnw
+          ./mvnw clean package -Dtestskip
 
       - name: Login to DockerHub
         uses: docker/login-action@v3
