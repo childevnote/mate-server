@@ -24,9 +24,8 @@ jobs:
       - name: Build with Maven
         run: |
           echo ${{secrets.APPLICATION}} | base64 --decode > ./src/main/resources/application.yml
-          cat ./src/main/resources/application.yml
           chmod 777 ./mvnw
-          ./mvnw clean package -Dtestskip
+          ./mvnw clean install -Dtestskip
 
       - name: Login to DockerHub
         uses: docker/login-action@v3
